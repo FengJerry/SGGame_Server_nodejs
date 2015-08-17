@@ -1,0 +1,20 @@
+{
+  "name": "HeroJson",
+  "version": "0.0.0",
+  "description": "HeroJson",
+  "main": "app.js",
+  "author": {
+    "name": "Administrator",
+    "email": ""
+  },
+  "dependencies": {
+    "bytes": "^2.1.0",
+    "express": "3.4.4",
+    "iconv-lite": "^0.4.10",
+    "jade": "*",
+    "mysql": "^2.7.0",
+    "qs": "^3.1.0",
+    "raw-body": "^2.1.0",
+    "stylus": "*"
+  }
+}
