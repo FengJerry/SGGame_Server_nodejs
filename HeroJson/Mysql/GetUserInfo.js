@@ -15,10 +15,10 @@ exports.Response = function (req , res) {
         // Use the connection
         connection.query(sqlUser, function (err, rows) {
             // And done with the connection.
+
             var result = JSON.stringify(rows[0]);
 			//  connection.release();
 	        respondResult += "\"data\": " + result+",";
-			
 			
 			
 			connection.query(sqlHero, function (err, rows) {
