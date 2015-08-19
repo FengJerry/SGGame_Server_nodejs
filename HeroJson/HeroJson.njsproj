@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="Mysql\ConnectMysql.js" />
+    <Compile Include="Mysql\GetUserInfo.js" />
     <Compile Include="Mysql\Hero.js" />
     <Compile Include="Mysql\Item.js" />
     <Compile Include="Mysql\Setting.js" />
@@ -40,6 +41,7 @@
     <Compile Include="Test\TestPostJson.js" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Mysql\Dialogue.json" />
     <Content Include="Mysql\MysqlConfig.json" />
     <Content Include="public\javascripts\bootstrap.js" />
     <Content Include="public\javascripts\bootstrap.min.js" />
