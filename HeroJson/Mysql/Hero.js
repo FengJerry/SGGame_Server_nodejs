@@ -3,7 +3,7 @@
 
 exports.GetResponse = function (req , res) {
     
-    //var connection = database.getConnection();
+    var connection = database.getConnection();
     
     var sql = 'select * from ts_hero where InUse = 1'
     
@@ -13,7 +13,11 @@ exports.GetResponse = function (req , res) {
         // Use the connection
         connection.query(sql, function (err, rows) {
             // And done with the connection.
-            
+            if (err) {
+                console.log("mysql GetHero error" + err);
+                connection.release();
+                return res.send(err);
+            }
             var result = JSON.stringify(rows);
             
             connection.release();
