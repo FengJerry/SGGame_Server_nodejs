@@ -55,7 +55,7 @@ exports.getConnectionPool = function (){
 
     var pool = mysql.createPool({
     
-        connectionLimit : 10,
+        connectionLimit : 15,
         host: config.host,
         user: config.user,
         password: config.password,

@@ -12,6 +12,10 @@ var itemInfo = require('./Mysql/Item.js');
 var skillInfo = require('./Mysql/Skill.js');
 var test = require('./Test/TestPostJson.js');
 var getUserInfo = require('./Mysql/GetUserInfo.js')
+var updateUserInfo = require('./Mysql/UpdateUserInfo.js')
+var heroUpgrade = require('./Mysql/HeroUpgrade.js')
+var checkHeroUpgrade = require('./Mysql/CheckHeroUpgrade.js')
+
 
 var app = express();
 
@@ -42,7 +46,10 @@ app.get('/hero', heroInfo.GetResponse);
 app.get('/equipment', itemInfo.GetResponse);
 app.get('/skill', skillInfo.GetResponse);
 app.post('/testJson', test.Response);
-app.post('/getuserinfo', getUserInfo.Response)
+app.post('/getuserinfo', getUserInfo.Response);
+app.post('/updateuserinfo', updateUserInfo.Response);
+app.post('/upgradehero',heroUpgrade.Response);
+app.post('/checkheroupgrade',checkHeroUpgrade.Response);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
