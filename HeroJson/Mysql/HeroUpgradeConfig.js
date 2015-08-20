@@ -5,8 +5,7 @@ exports.GetResponse = function (req , res) {
     
     var connection = database.getConnection();
     
-    var sql = 'select Level  NeedTime Title NeedDiamon from ts_heroupgradeconfig'
-    
+    var sql = 'select Level,NeedTime,Title,NeedDiamond from ts_herogradeconfig';
     var pool = database.getConnectionPool();
     
     pool.getConnection(function (err, connection) {
