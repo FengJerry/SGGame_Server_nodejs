@@ -52,7 +52,7 @@ app.get('/getupgradetime', getUpgradeTime.Response);
 app.post('/updateuserinfo', updateUserInfo.Response);
 app.post('/upgradehero',heroUpgrade.Response);
 app.post('/checkheroupgrade', checkHeroUpgrade.Response);
-app.get('/heroupgradeconfig', heroUpgradeConfig);
+app.get('/heroupgradeconfig', heroUpgradeConfig.Response);
 
 
 http.createServer(app).listen(app.get('port'), function () {
