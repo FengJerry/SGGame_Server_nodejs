@@ -12,6 +12,7 @@ var itemInfo = require('./Mysql/Item.js');
 var skillInfo = require('./Mysql/Skill.js');
 var test = require('./Test/TestPostJson.js');
 var getUserInfo = require('./Mysql/GetUserInfo.js')
+var getUpgradeTime = require('./Mysql/GetUpgradeTime.js')
 var updateUserInfo = require('./Mysql/UpdateUserInfo.js')
 var heroUpgrade = require('./Mysql/HeroUpgrade.js')
 var checkHeroUpgrade = require('./Mysql/CheckHeroUpgrade.js')
@@ -47,6 +48,7 @@ app.get('/equipment', itemInfo.GetResponse);
 app.get('/skill', skillInfo.GetResponse);
 app.post('/testJson', test.Response);
 app.post('/getuserinfo', getUserInfo.Response);
+app.get('/getupgradetime', getUpgradeTime.Response);
 app.post('/updateuserinfo', updateUserInfo.Response);
 app.post('/upgradehero',heroUpgrade.Response);
 app.post('/checkheroupgrade', checkHeroUpgrade.Response);
