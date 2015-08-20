@@ -1,7 +1,7 @@
 ﻿var database = require('./ConnectMysql.js');
 
 
-exports.GetResponse = function (req , res) {
+exports.Response = function (req , res) {
     
     var connection = database.getConnection();
     
