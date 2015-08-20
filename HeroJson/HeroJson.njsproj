@@ -34,9 +34,12 @@
     <Compile Include="Mysql\ConnectMysql.js" />
     <Compile Include="Mysql\GetUserInfo.js" />
     <Compile Include="Mysql\Hero.js" />
+    <Compile Include="Mysql\HeroUpgrade.js" />
+    <Compile Include="Mysql\HeroUpgradeConfig.js" />
     <Compile Include="Mysql\Item.js" />
     <Compile Include="Mysql\Setting.js" />
     <Compile Include="Mysql\Skill.js" />
+    <Compile Include="Mysql\UpdateUserInfo.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="Test\TestPostJson.js" />
   </ItemGroup>
