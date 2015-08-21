@@ -1,4 +1,4 @@
-﻿var database = require('D:/Node.js/HeroJson/HeroJson/Mysql/ConnectMysql.js');
+﻿var database = require('./ConnectMysql.js');
 
 exports.Response = function (req , res) {
     
@@ -20,27 +20,31 @@ exports.Response = function (req , res) {
                         return res.send(err);
                     }
             
-                 var array = new Array();
-                for (var  i = 0; i < rows.Count; i++) {
+                    var array = new Array();
+                    for (var  i = 0; i < rows.length ; i++) {
                 
-                    if (rows[i].IsOver.toString() == 1) {
+                        if (rows[i].IsOver.toString() == 1) {
 					
 
-                    }
-                    else if (rows[i].IsOver.toString() == 0) {
-
-                    var timediff = rows[i].StartTime - new Date();
-                    var json = { UserHeroId: rows.UserHeroId, NeedTime: timediff };
-
-
-                    }
-                }
-            var result = JSON.stringify(array);
+                        }
+                        else if (rows[i].IsOver.toString() == 0) {
                     
-            result = "\"data\": " + result + ",";
-            connection.release();
-            res.type('json');
-            return res.send(result);	
-				});
+                            var timeNow = new Date()
+                            var timediff = timeNow.getTime() - rows[i].StartTime.getTime();
+                            var seconds = Math.round(timediff / 1000)
+                            var json = {
+                                UserHeroId: rows[i].UserHeroId, NeedTime: timediff
+                             };
+
+                            array.push(json);
+                        }
+                    }
+                        var result = JSON.stringify(array);
+                    
+                        result = "\"data\": " + result + ",";
+                        connection.release();
+                        res.type('json');
+                        return res.send(result);	
+			});
      });
 }

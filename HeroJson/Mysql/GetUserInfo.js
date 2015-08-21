@@ -1,4 +1,4 @@
-﻿var database = require('D:/Node.js/HeroJson/HeroJson/Mysql/ConnectMysql.js');
+﻿var database = require('./ConnectMysql.js');
 
 exports.Response = function (req , res) {
     
