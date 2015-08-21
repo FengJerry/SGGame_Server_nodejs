@@ -30,10 +30,10 @@ exports.Response = function (req , res) {
                         else if (rows[i].IsOver.toString() == 0) {
                     
                             var timeNow = new Date()
-                            var timediff = timeNow.getTime() - rows[i].StartTime.getTime();
+                            var timediff =rows[i].EndTime.getTime() - timeNow.getTime();
                             var seconds = Math.round(timediff / 1000)
                             var json = {
-                                UserHeroId: rows[i].UserHeroId, NeedTime: timediff
+                                UserHeroId: rows[i].UserHeroId, NeedTime: seconds
                              };
 
                             array.push(json);
@@ -41,7 +41,7 @@ exports.Response = function (req , res) {
                     }
                         var result = JSON.stringify(array);
                     
-                        result = "\"data\": " + result + ",";
+                        result = "{\"data\": " + result + "}";
                         connection.release();
                         res.type('json');
                         return res.send(result);	

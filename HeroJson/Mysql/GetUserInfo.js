@@ -5,7 +5,7 @@ exports.Response = function (req , res) {
 	var connection = database.getConnection();
     
     var sqlUser = 'select UserId,Gold,Diamond,Stamina from tb_userinfo where userId = ' + connection.escape(req.body.userId);
-    var sqlHero = 'select UserHeroId HeroId,HeroLevel from tb_userhero where userId = ' + connection.escape(req.body.userId);
+    var sqlHero = 'select UserHeroId,HeroId,HeroLevel from tb_userhero where userId = ' + connection.escape(req.body.userId);
     var sqlEquipment = 'select * from tb_userequipment where userId = ' + connection.escape(req.body.userId);
 
     var pool = database.getConnectionPool();
