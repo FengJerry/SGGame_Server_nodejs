@@ -17,32 +17,8 @@ exports.Response = function (req , res) {
             throw err;
         }
         
-        connection.query(checkHeroUpgrade, function (err, rows) {
-            // And done with the connection.
-            if (err) {
-                console.log("mysql checkUpgradeHero error" + err);
-                connection.release();
-                return res.send(err);
-            }
-            
-            if (rows[0].IsOver.toString() == 1) {
-                connection.release();
-                return res.send("Upgrade Done!");
-            }
-            else if (rows[0].IsOver.toString() == 0) {
-                connection.query(checkDeadline, function (err, rows) {
-                    if (err) {
-                        console.log("mysql checkDeadline error" + err);
-                        connection.release();
-                        return res.send(err);
-                    }
-                    
-                    if (rows[0].result.toString() == 0) {
-                        connection.release();
-                        return res.send("The hero is upgrading!");
-						
-                    }
-                    else if (rows[0].result.toString() == 1) {
+      
+
                         connection.query(updateIsOver, function (err, rows) {
                             if (err) {
                                 console.log("mysql updateIsOver error" + err);
@@ -61,9 +37,6 @@ exports.Response = function (req , res) {
 									
                             });
                         });
-                    }
-                });
-            }
-        });
     });
+
 }
