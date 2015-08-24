@@ -10,6 +10,9 @@ exports.Response = function (req , res) {
     
     pool.getConnection(function (err, connection) {
         // Use the connection
+        if (err) {
+            throw err;
+        }
         connection.query(sql, function (err, rows) {
             // And done with the connection.
             

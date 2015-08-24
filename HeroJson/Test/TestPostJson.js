@@ -9,7 +9,7 @@ exports.Response = function (req , res) {
   //  return res.send("hello world");
     
 	
-	  var connection = database.getConnection();
+	  //var connection = database.getConnection();
     			console.log('reqtest = ' + req.body.userId);
 
     var sqlUser = 'select UserId,Gold,Diamond,Stamina from tb_userinfo where userId = ' + connection.escape(req.body.userId);
@@ -19,6 +19,12 @@ exports.Response = function (req , res) {
     var pool = database.getConnectionPool();
     
     pool.getConnection(function (err, connection) {
+        
+        if (err) {
+            throw err;
+        }
+        
+
 	     var  respondResult = "" ;
         // Use the connection
         connection.query(sqlUser, function (err, rows) {
