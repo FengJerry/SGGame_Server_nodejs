@@ -3,8 +3,7 @@
 
 exports.Response = function (req , res) {
     
-    var connection = database.getConnection();
-    
+
     var sql = 'select NeedCoin, Level,NeedTime,Title,NeedDiamond from ts_herogradeconfig';
     var pool = database.getConnectionPool();
     

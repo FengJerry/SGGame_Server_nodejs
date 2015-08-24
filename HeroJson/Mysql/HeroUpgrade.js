@@ -1,7 +1,7 @@
 ﻿var database = require('./ConnectMysql.js');
 exports.Response = function (req , res) {
     
-	var connection = database.getConnection();
+
     
 	var queryUpgradeTime = 'select NeedTime from ts_herogradeconfig ' + 'where Level = ' + connection.escape(req.body.heroLevel);
 	var insertUpgradeHero = 'insert into tb_heroupgrade (UserId,UserHeroId,HeroLevel,StartTime,EndTime,IsOver) value (' + connection.escape(req.body.userId)

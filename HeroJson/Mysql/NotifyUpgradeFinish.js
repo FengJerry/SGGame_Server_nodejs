@@ -2,7 +2,7 @@
 
 exports.Response = function (req , res) {
     
-    var connection = database.getConnection();
+    // var connection = database.getConnection();
     
     var checkHeroUpgrade = 'select IsOver from tb_heroupgrade where UserHeroId = ' + connection.escape(req.body.userHeroId);
     var checkDeadline = 'SELECT TIMEDIFF((SELECT EndTime FROM tb_heroupgrade WHERE UserHeroId = ' + connection.escape(req.body.userHeroId) + '), NOW())  < 0.5 as result';

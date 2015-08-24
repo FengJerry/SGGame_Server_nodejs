@@ -3,7 +3,7 @@
 
 exports.GetResponse = function (req , res) {
     
-    var connection = database.getConnection();
+
     
     var sql = 'select * from ts_skill'
     
