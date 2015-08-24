@@ -17,7 +17,7 @@ var updateUserInfo = require('./Mysql/UpdateUserInfo.js')
 var heroUpgrade = require('./Mysql/HeroUpgrade.js')
 var checkHeroUpgrade = require('./Mysql/CheckHeroUpgrade.js')
 var heroUpgradeConfig = require('./Mysql/HeroUpgradeConfig.js');
-var notifyHeroUpgradeFinish = require('./Mysql/NotifyHeroUpgradeFinish.js');
+var notifyHeroUpgradeFinish = require('./Mysql/NotifyUpgradeFinish.js');
 var addHero = require('./Mysql/AddHero.js');
 var addEquipment = require('./Mysql/AddEquipment.js');
 
