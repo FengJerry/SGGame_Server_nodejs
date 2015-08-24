@@ -2,7 +2,7 @@
 
 exports.Response = function (req , res) {
     
-	var connection = database.getConnection();
+
     
 	var sqlUpdate = 'update tb_userinfo set ' + checkGold() 
 											  + checkDiamond()

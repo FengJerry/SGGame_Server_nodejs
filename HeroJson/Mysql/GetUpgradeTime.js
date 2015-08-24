@@ -2,7 +2,7 @@
 
 exports.Response = function (req , res) {
     
-	var connection = database.getConnection();
+	// var connection = database.getConnection();
     
 
     var sqlUpgradeTime = 'select * from tb_userequipment' ;

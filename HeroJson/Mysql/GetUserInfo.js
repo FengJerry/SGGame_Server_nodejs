@@ -2,7 +2,7 @@
 
 exports.Response = function (req , res) {
     
-	var connection = database.getConnection();
+	
     
     var sqlUser = 'select UserId,Gold,Diamond,Stamina from tb_userinfo where userId = ' + connection.escape(req.body.userId);
 
