@@ -45,15 +45,19 @@ exports.getConnection = function (){
     return module.exports.connection;
 
 }
+var pool;
+
 exports.getConnectionPool = function (){
 
-    
-    if (typeof module.exports.connectPool !== "undefined") {
 
-        return module.exports.connectPool;
+    
+
+    if (typeof pool !== "undefined") {
+
+        return module.exports.pool;
     }
 
-    var pool = mysql.createPool({
+     pool = mysql.createPool({
     
         connectionLimit : 15,
         host: config.host,

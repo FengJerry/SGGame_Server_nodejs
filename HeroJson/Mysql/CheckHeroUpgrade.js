@@ -4,7 +4,7 @@ exports.Response = function (req , res) {
     
 	// var connection = database.getConnection();
     
-    var selectAllSql = ' select  UserHeroId , StartTime , EndTime , IsOver from tb_heroupgrade where UserId = ' +connection.escape(req.body.userId);
+    var selectAllSql = ' select  UserHeroId , StartTime , EndTime , IsOver from tb_heroupgrade where UserId = ' +req.body.userId;
 
     var pool = database.getConnectionPool();
     

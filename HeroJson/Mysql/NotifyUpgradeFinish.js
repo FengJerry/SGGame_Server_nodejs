@@ -4,10 +4,10 @@ exports.Response = function (req , res) {
     
     // var connection = database.getConnection();
     
-    var checkHeroUpgrade = 'select IsOver from tb_heroupgrade where UserHeroId = ' + connection.escape(req.body.userHeroId);
-    var checkDeadline = 'SELECT TIMEDIFF((SELECT EndTime FROM tb_heroupgrade WHERE UserHeroId = ' + connection.escape(req.body.userHeroId) + '), NOW())  < 0.5 as result';
-    var updateIsOver = 'update tb_heroupgrade set IsOver = 1 where UserHeroId = ' + connection.escape(req.body.userHeroId);
-    var updateHeroGrade = 'update tb_userhero set HeroLevel = HeroLevel + 1 where UserHeroId = ' + connection.escape(req.body.userHeroId);
+    var checkHeroUpgrade = 'select IsOver from tb_heroupgrade where UserHeroId = ' + req.body.userHeroId;
+    var checkDeadline = 'SELECT TIMEDIFF((SELECT EndTime FROM tb_heroupgrade WHERE UserHeroId = ' + req.body.userHeroId + '), NOW())  < 0.5 as result';
+    var updateIsOver = 'update tb_heroupgrade set IsOver = 1 where UserHeroId = ' +req.body.userHeroId;
+    var updateHeroGrade = 'update tb_userhero set HeroLevel = HeroLevel + 1 where UserHeroId = ' + req.body.userHeroId;
     
     var pool = database.getConnectionPool();
     
