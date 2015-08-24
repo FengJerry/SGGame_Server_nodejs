@@ -17,7 +17,9 @@ var updateUserInfo = require('./Mysql/UpdateUserInfo.js')
 var heroUpgrade = require('./Mysql/HeroUpgrade.js')
 var checkHeroUpgrade = require('./Mysql/CheckHeroUpgrade.js')
 var heroUpgradeConfig = require('./Mysql/HeroUpgradeConfig.js');
-var notifyHeroUpgradeFinish = require('./Mysql/NotifyUpgradeFinish.js')
+var notifyHeroUpgradeFinish = require('./Mysql/NotifyHeroUpgradeFinish.js');
+var addHero = require('./Mysql/AddHero.js');
+var addEquipment = require('./Mysql/AddEquipment.js');
 
 var app = express();
 
@@ -55,6 +57,9 @@ app.post('/upgradehero',heroUpgrade.Response);
 app.post('/checkheroupgrade', checkHeroUpgrade.Response);
 app.get('/heroupgradeconfig', heroUpgradeConfig.Response);
 app.post('/notifyHeroUpgradeFinish',notifyHeroUpgradeFinish.Response);
+app.post('/addhero', addHero.Response);
+app.post('/addequipment', addEquipment.Response);
+
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
