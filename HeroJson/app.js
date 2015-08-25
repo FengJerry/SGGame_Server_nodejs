@@ -18,8 +18,10 @@ var heroUpgrade = require('./Mysql/HeroUpgrade.js')
 var checkHeroUpgrade = require('./Mysql/CheckHeroUpgrade.js')
 var heroUpgradeConfig = require('./Mysql/HeroUpgradeConfig.js');
 var notifyHeroUpgradeFinish = require('./Mysql/NotifyUpgradeFinish.js');
+var notifyEquipmentUpgrade = require('./Mysql/NotifyEquipmentUpgrade.js');
 var addHero = require('./Mysql/AddHero.js');
 var addEquipment = require('./Mysql/AddEquipment.js');
+
 
 var app = express();
 
@@ -56,7 +58,8 @@ app.post('/updateuserinfo', updateUserInfo.Response);
 app.post('/upgradehero',heroUpgrade.Response);
 app.post('/checkheroupgrade', checkHeroUpgrade.Response);
 app.get('/heroupgradeconfig', heroUpgradeConfig.Response);
-app.post('/notifyHeroUpgradeFinish',notifyHeroUpgradeFinish.Response);
+app.post('/notifyHeroUpgradeFinish', notifyHeroUpgradeFinish.Response);
+app.post('/notifyEquipmentUpgrade', notifyEquipmentUpgrade.Response);
 app.post('/addhero', addHero.Response);
 app.post('/addequipment', addEquipment.Response);
 
