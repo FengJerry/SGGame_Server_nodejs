@@ -1,14 +1,14 @@
 ﻿var database = require('./ConnectMysql.js');
 exports.Response = function (req , res) {
     
-	var connection = database.getConnection();
+	//var connection = database.getConnection();
     
 	var addHero = 'insert into tb_userhero (UserId,HeroId,HeroLevel) value ('
-        + connection.escape(req.body.userId)
+        + req.body.userId
         + ','
-        + connection.escape(req.body.heroId)
+        + req.body.heroId
         + ','
-        + connection.escape(req.body.heroLevel)
+        + req.body.heroLevel
         + ')';
 
     var pool = database.getConnectionPool();
