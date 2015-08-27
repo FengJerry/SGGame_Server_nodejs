@@ -22,7 +22,8 @@ var notifyHeroUpgradeFinish = require('./Mysql/NotifyUpgradeFinish.js');
 var notifyEquipmentUpgrade = require('./Mysql/NotifyEquipmentUpgrade.js');
 var addHero = require('./Mysql/AddHero.js');
 var addEquipment = require('./Mysql/AddEquipment.js');
-
+var setEquipment = require('./Mysql/SetEquipment.js');
+var resetEquipment = require('./Mysql/ResetEquipment.js');
 
 var app = express();
 
@@ -64,6 +65,8 @@ app.post('/notifyHeroUpgradeFinish', notifyHeroUpgradeFinish.Response);
 app.post('/notifyEquipmentUpgrade', notifyEquipmentUpgrade.Response);
 app.post('/addhero', addHero.Response);
 app.post('/addequipment', addEquipment.Response);
+app.post('/setequipment', setEquipment.Response);
+app.post('/resetequipment', resetEquipment.Response);
 
 
 http.createServer(app).listen(app.get('port'), function () {

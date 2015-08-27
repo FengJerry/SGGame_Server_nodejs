@@ -3,12 +3,13 @@ exports.Response = function (req , res) {
     
 	//var connection = database.getConnection();
     
-	var addHero = 'insert into tb_userequipment (UserId,EquipmentId,EquipmentLevel) value ('
+    var addEquipment = 'insert into tb_userequipment (UserId,UserEquipmentId,EquipmentLevel,LevelCanEquip) value ('
         + req.body.userId
         + ','
-        + req.body.equipmentId
+        + req.body.userEquipmentId
         + ','
         + req.body.equipmentLevel
+        + req.body.levelCanEquip
         + ')';
 
     var pool = database.getConnectionPool();
