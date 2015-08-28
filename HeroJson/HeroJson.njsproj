@@ -36,6 +36,7 @@
     <Compile Include="Mysql\HeroUpgrade.js" />
     <Compile Include="Mysql\HeroUpgradeConfig.js" />
     <Compile Include="Mysql\Item.js" />
+    <Compile Include="Mysql\Notice.js" />
     <Compile Include="Mysql\NotifyUpgradeFinish.js" />
     <Compile Include="Mysql\Setting.js" />
     <Compile Include="Mysql\Skill.js" />
