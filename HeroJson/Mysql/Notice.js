@@ -5,7 +5,7 @@ exports.GetResponse = function (req , res) {
     
     
     
-    var sql = 'select top 10 from tb_news'
+    var sql = 'select * from tb_news ORDER BY AddDate DESC limit 10';
     
     var pool = database.getConnectionPool();
     
