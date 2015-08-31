@@ -1,4 +1,7 @@
-﻿
+﻿//static variable
+global.Hero = '';
+global.Equipment = '';
+
 /**
  * Module dependencies.
  */

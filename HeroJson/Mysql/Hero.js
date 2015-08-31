@@ -3,9 +3,12 @@
 
 exports.GetResponse = function (req , res) {
     
+    if (global.Hero !== '') {
+        res.type('json');
+        return res.send(global.Hero);
+    }
 
-    
-    var sql = 'select * from ts_hero where InUse = 1'
+    var sql = 'select * from ts_hero where InUse = 1';
     
     var pool = database.getConnectionPool();
     
@@ -25,8 +28,7 @@ exports.GetResponse = function (req , res) {
             var result = JSON.stringify(rows);
             
             connection.release();
-
-
+            global.Hero = "{ \"data\": " + result + "}";
             res.type('json');
             return res.send("{ \"data\": " + result +"}");
 

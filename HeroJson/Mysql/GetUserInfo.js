@@ -1,8 +1,7 @@
 ﻿var database = require('./ConnectMysql.js');
-
 exports.Response = function (req , res) {
     
-	
+
     
     var sqlUser = 'select UserId,Gold,Diamond,Stamina from tb_userinfo where userId = ' + req.body.userId;
 
@@ -18,6 +17,8 @@ exports.Response = function (req , res) {
             throw err;
         }
 
+       
+
 	     var  respondResult = "" ;
         // Use the connection
         connection.query(sqlUser, function (err, rows) {
@@ -31,7 +32,8 @@ exports.Response = function (req , res) {
 			connection.query(sqlHero, function (err, rows) {
             
 				var result = JSON.stringify(rows);
-				// connection.release();
+			    // connection.release();
+
 				respondResult += "\"heroConfig\": " + result+ ",";
 			 
 			   connection.query(sqlEquipment, function (err, rows) {
@@ -40,7 +42,7 @@ exports.Response = function (req , res) {
 					respondResult += "\"equipmentConfig\": " + result ;
 					connection.release();
 					res.type('json');
-					respondResult = "{" + respondResult +"}";
+					respondResult = "{" + respondResult + "}";
 					return res.send(respondResult);
                 });
 			});

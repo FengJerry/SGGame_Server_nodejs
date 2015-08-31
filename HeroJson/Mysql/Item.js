@@ -3,7 +3,10 @@
 
 exports.GetResponse = function (req , res) {
     
-
+    if (global.Equipment !== '') {
+        res.type('json');
+        return res.send(global.Equipment);
+    }
     
     var sql = 'select * from ts_equipment'
     
@@ -22,7 +25,7 @@ exports.GetResponse = function (req , res) {
             
             connection.release();
             
-            
+            global.Equipment = "{ \"data\": " + result + "}";
             res.type('json');
             return res.send("{ \"data\": " + result + "}");
 

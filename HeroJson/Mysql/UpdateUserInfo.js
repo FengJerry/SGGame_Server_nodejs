@@ -13,6 +13,8 @@ exports.Response = function (req , res) {
 											  + checkPurpleFragment()
                                               + 'where UserId = ' + req.body.userId;
 	
+	var sqlUser = 'select UserId,Gold,Diamond,Stamina,Powder,GreenFragment,BlueFragment,PurpleFragment from tb_userinfo where userId = ' + req.body.userId;
+
 	
     var pool = database.getConnectionPool();
     
@@ -29,9 +31,19 @@ exports.Response = function (req , res) {
 					connection.release();					
 					return res.send(err);
 				}
-
+			    connection.query(sqlUser, function (err, rows) {
+			        // And done with the connection.
+			        if (err) {
+			            console.log("mysql getUpdate error" + err); 
+			            connection.release();					
+			            return res.send(err);
+			        }
+			        var result = JSON.stringify(rows[0]);
+			        //  connection.release();
+			        result = "{\"data\": " + result+"}";
+			        res.type('json');
 					connection.release();
-					return res.send("Update successed!");
+					return res.send(result);
                 });
      });
 
