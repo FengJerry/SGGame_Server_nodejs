@@ -12,24 +12,37 @@ exports.GetResponse = function (req , res) {
     pool.getConnection(function (err, connection) {
         // Use the connection
         if (err) {
-            throw err;
+            connection.release();
+            res.type('json');
+            return res.send(global.ResponseErr + err +"}");
         }
 
         connection.query(sqlEquipment, function (err, rows) {
             // And done with the connection.
-            
+            if (err) {
+                connection.release();
+                res.type('json');
+                return res.send(global.ResponseErr + err + "}");
+            }
+
             var result = JSON.stringify(rows);
   
             global.Equipment = "{ \"data\": " + result + "}";
 
             connection.query(sqlHero, function (err, rows) {
                 // And done with the connection.
+                if (err) {
+                    connection.release();
+                    res.type('json');
+                    return res.send(global.ResponseErr + err + "}");
+                }
 
                 var result = JSON.stringify(rows);
 
                 global.Hero = "{ \"data\": " + result + "}";
                 connection.release();
-                return res.send("Refresh Success!");
+                res.type('json');
+                return res.send(global.ResponseMsg + global.Hero + global.Equipment +"}");
 
                 // Don't use the connection here, it has been returned to the pool.
             });

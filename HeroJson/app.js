@@ -1,6 +1,8 @@
 ﻿//static variable
 global.Hero = '';
 global.Equipment = '';
+global.ResponseMsg = "{ \"SuccessOrNot\":\"1\", \"data\":";
+global.ResponseErr = "{ \"SuccessOrNot\":\"0\", \"error\":";
 
 /**
  * Module dependencies.
@@ -27,7 +29,7 @@ var addHero = require('./Mysql/AddHero.js');
 var addEquipment = require('./Mysql/AddEquipment.js');
 var setEquipment = require('./Mysql/SetEquipment.js');
 var resetEquipment = require('./Mysql/ResetEquipment.js');
-var refreshHeroEquipment = required('./Mysql/refreshHeroEquipment.js')
+var refreshHeroEquipment = require('./Mysql/RefreshHeroEquipment.js')
 var getNotice = require('./Mysql/Notice.js');
 
 var app = express();
