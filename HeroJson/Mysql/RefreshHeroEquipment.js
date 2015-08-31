@@ -14,7 +14,7 @@ exports.GetResponse = function (req , res) {
         if (err) {
             connection.release();
             res.type('json');
-            return res.send(global.ResponseErr + err +"}");
+            return res.send(global.ResponseErr + err.toString() + "\"}");
         }
 
         connection.query(sqlEquipment, function (err, rows) {
@@ -22,7 +22,7 @@ exports.GetResponse = function (req , res) {
             if (err) {
                 connection.release();
                 res.type('json');
-                return res.send(global.ResponseErr + err + "}");
+                return res.send(global.ResponseErr + err.toString() + "\"}");
             }
 
             var result = JSON.stringify(rows);
@@ -34,7 +34,7 @@ exports.GetResponse = function (req , res) {
                 if (err) {
                     connection.release();
                     res.type('json');
-                    return res.send(global.ResponseErr + err + "}");
+                    return res.send(global.ResponseErr + err.toString() + "\"}");
                 }
 
                 var result = JSON.stringify(rows);
@@ -42,7 +42,8 @@ exports.GetResponse = function (req , res) {
                 global.Hero = "{ \"data\": " + result + "}";
                 connection.release();
                 res.type('json');
-                return res.send(global.ResponseMsg + global.Hero + global.Equipment +"}");
+                return res.send("Refresh Success!");
+                //    return res.send(global.ResponseMsg + global.Hero + global.Equipment +"}");
 
                 // Don't use the connection here, it has been returned to the pool.
             });

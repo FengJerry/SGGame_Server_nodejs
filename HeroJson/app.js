@@ -1,8 +1,8 @@
 ﻿//static variable
 global.Hero = '';
 global.Equipment = '';
-global.ResponseMsg = "{ \"SuccessOrNot\":\"1\", \"data\":";
-global.ResponseErr = "{ \"SuccessOrNot\":\"0\", \"error\":";
+global.ResponseMsg = "{ \"SuccessOrNot\":1, \"data\":";
+global.ResponseErr = "{ \"SuccessOrNot\":0, \"error\":\"";
 
 /**
  * Module dependencies.
