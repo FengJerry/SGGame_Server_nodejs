@@ -28,6 +28,8 @@ var addEquipment = require('./Mysql/AddEquipment.js');
 var setEquipment = require('./Mysql/SetEquipment.js');
 var resetEquipment = require('./Mysql/ResetEquipment.js');
 
+var getNotice = require('./Mysql/Notice.js');
+
 var app = express();
 
 // all environments
@@ -70,6 +72,8 @@ app.post('/addhero', addHero.Response);
 app.post('/addequipment', addEquipment.Response);
 app.post('/setequipment', setEquipment.Response);
 app.post('/resetequipment', resetEquipment.Response);
+app.post('/getnotice', getNotice.GetResponse);
+
 
 
 http.createServer(app).listen(app.get('port'), function () {
