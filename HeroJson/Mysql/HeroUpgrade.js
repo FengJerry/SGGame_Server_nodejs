@@ -14,7 +14,7 @@ exports.Response = function (req , res) {
                                                                                                                     + queryUpgradeTime
                                                                                                                     + '),NOW())'
                                                                                                                     + ',0)'
-    var checkExist = 'SELECT EXISTS(SELECT * FROM tb_heroupgrade WHERE IsOver =1  and  UserHeroId = ' + req.body.userHeroId + ') as exist';
+    var checkExist = 'SELECT EXISTS(SELECT * FROM tb_heroupgrade WHERE IsOver =0  and  UserHeroId = ' + req.body.userHeroId + ') as exist';
     var pool = database.getConnectionPool();
     
     pool.getConnection(function (err, connection) {
