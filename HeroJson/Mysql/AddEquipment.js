@@ -1,8 +1,8 @@
 ﻿var database = require('./ConnectMysql.js');
-exports.Response = function (req , res) {
-    
-	//var connection = database.getConnection();
-    
+exports.Response = function (req, res) {
+
+    //var connection = database.getConnection();
+
     var addEquipment = 'insert into tb_userequipment (UserId,UserEquipmentId,EquipmentLevel,LevelCanEquip) value ('
         + req.body.userId
         + ','
@@ -13,24 +13,26 @@ exports.Response = function (req , res) {
         + ')';
 
     var pool = database.getConnectionPool();
-    
+
+    res.type('json');
+
     pool.getConnection(function (err, connection) {
         // Use the connection
         if (err) {
             throw err;
+            connection.release();
+            return res.send(global.ResponseErr + err.toString() + "\"}");
         }
-				
-        connection.query(addEquipment, function (err, rows) {
-                    // And done with the connection.
-                    if (err) {
-                        console.log("mysql addEquipment error" + err);
-						connection.release();
-                        return res.send(err);
-                    }
-                    connection.release();
 
-                    return res.send("Request successed!");
-                });
-     });
+        connection.query(addEquipment, function (err, rows) {
+            // And done with the connection.
+            if (err) {
+                connection.release();
+                return res.send(global.ResponseErr + err.toString() + "\"}");
+            }
+            connection.release();
+            return res.send(global.ResponseMsg + "}");
+        });
+    });
 
 }
