@@ -2,7 +2,7 @@
 exports.Response = function (req , res) {
     
 
-    var deleteUpgradeHero = 'delete from tb_heroupgrade where UserHeroId = ' + req.body.userHeroId;
+    var deleteUpgradeHero = 'delete from tb_heroupgrade where IsOver =0 and UserHeroId = ' + req.body.userHeroId;
 
     var pool = database.getConnectionPool();
     
