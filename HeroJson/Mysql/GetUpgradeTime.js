@@ -1,36 +1,37 @@
 ﻿var database = require('./ConnectMysql.js');
 
-exports.Response = function (req , res) {
-    
-	// var connection = database.getConnection();
-    
+exports.Response = function (req, res) {
 
-    var sqlUpgradeTime = 'select * from tb_userequipment' ;
+    // var connection = database.getConnection();
+
+
+    var sqlUpgradeTime = 'select * from tb_userequipment';
 
     var pool = database.getConnectionPool();
-    
+
+    res.type('json');
+
     pool.getConnection(function (err, connection) {
         // Use the connection
-        
+
         if (err) {
             throw err;
+            connection.release();
+            return res.send(global.ResponseErr + err.toString() + "\"}");
         }
         connection.query(sqlUpgradeTime, function (err, rows) {
             // And done with the connection.
             if (err) {
-                console.log("mysql checkUpgradeHero error" + err);
                 connection.release();
-                return res.send(err);
+                return res.send(global.ResponseErr + err.toString() + "\"}");
             }
 
             var result = JSON.stringify(rows);
-			//  connection.release();
-	        result= "\"data\": " + result+",";
-	        connection.release();
-	        res.type('json');
-	        return res.send(result);
+            //  connection.release();
+            connection.release();
+            return res.send(global.ResponseMsg + ",\"data\": " + result + "}");
 
-         });
-     });
+        });
+    });
 
 }

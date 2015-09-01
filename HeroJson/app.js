@@ -1,7 +1,7 @@
 ﻿//static variable
 global.Hero = '';
 global.Equipment = '';
-global.ResponseMsg = "{ \"SuccessOrNot\":1, \"data\":";
+global.ResponseMsg = "{ \"SuccessOrNot\":1";
 global.ResponseErr = "{ \"SuccessOrNot\":0, \"error\":\"";
 
 /**

@@ -1,10 +1,10 @@
 ﻿var database = require('./ConnectMysql.js');
 
-exports.Response = function (req , res) {
-    
+exports.Response = function (req, res) {
 
-    
-	var sqlUpdate = 'update tb_userinfo set ' + checkGold() 
+
+
+    var sqlUpdate = 'update tb_userinfo set ' + checkGold()
 											  + checkDiamond()
 											  + checkStamina()
 											  + checkPowder()
@@ -12,38 +12,39 @@ exports.Response = function (req , res) {
 											  + checkBlueFragment()
 											  + checkPurpleFragment()
                                               + 'where UserId = ' + req.body.userId;
-	
-	var sqlUser = 'select UserId,Gold,Diamond,Stamina,Powder,GreenFragment,BlueFragment,PurpleFragment from tb_userinfo where userId = ' + req.body.userId;
 
-	
+    var sqlUser = 'select UserId,Gold,Diamond,Stamina,Powder,GreenFragment,BlueFragment,PurpleFragment from tb_userinfo where userId = ' + req.body.userId;
+
+
     var pool = database.getConnectionPool();
-    
-    pool.getConnection(function(err, connection) {
+
+    res.type('json');
+
+    pool.getConnection(function (err, connection) {
         // Use the connection
         if (err) {
             throw err;
+            connection.release();
+            return res.send(global.ResponseErr + err.toString() + "\"}");
         }
 
-        connection.query(sqlUpdate, function(err) {
+        connection.query(sqlUpdate, function (err) {
             // And done with the connection.
             if (err) {
-                console.log("mysql getUpdate error" + err);
                 connection.release();
-                return res.send(err);
+                return res.send(global.ResponseErr + err.toString() + "\"}");
             }
-            connection.query(sqlUser, function(err, rows) {
+            connection.query(sqlUser, function (err, rows) {
                 // And done with the connection.
                 if (err) {
-                    console.log("mysql getUpdate error" + err);
                     connection.release();
-                    return res.send(err);
+                    return res.send(global.ResponseErr + err.toString() + "\"}");
                 }
                 var result = JSON.stringify(rows[0]);
                 //  connection.release();
-                result = "{\"data\": " + result + "}";
                 res.type('json');
                 connection.release();
-                return res.send(result);
+                return res.send(global.ResponseMsg + ",\"data\": " + result + "}");
             });
         });
 

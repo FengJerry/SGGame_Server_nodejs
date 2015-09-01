@@ -9,22 +9,25 @@ exports.Response = function (req , res) {
 	
     var pool = database.getConnectionPool();
     
+    res.type('json');
+
     pool.getConnection(function (err, connection) {
         // Use the connection
         if (err) {
             throw err;
+            connection.release();
+            return res.send(global.ResponseErr + err.toString() + "\"}");
         }
 
         connection.query(setEquipment, function (err) {
             // And done with the connection.
 			    if (err) {
-			        console.log("mysql SetEquipment error" + err);
-					connection.release();					
-					return res.send(err);
+			        connection.release();
+			        return res.send(global.ResponseErr + err.toString() + "\"}");
 				}
 
 					connection.release();
-					return res.send("SetEquipment successed!");
+					return res.send(global.ResponseMsg + "}");
                 });
      });
 

@@ -1,9 +1,9 @@
 ﻿var database = require('./ConnectMysql.js');
-exports.Response = function (req , res) {
-    
-	//var connection = database.getConnection();
-    
-	var addHero = 'insert into tb_userhero (UserId,HeroId,HeroLevel) value ('
+exports.Response = function (req, res) {
+
+    //var connection = database.getConnection();
+
+    var addHero = 'insert into tb_userhero (UserId,HeroId,HeroLevel) value ('
         + req.body.userId
         + ','
         + req.body.heroId
@@ -12,24 +12,27 @@ exports.Response = function (req , res) {
         + ')';
 
     var pool = database.getConnectionPool();
-    
+
+    res.type('json');
+
     pool.getConnection(function (err, connection) {
         // Use the connection
         if (err) {
             throw err;
+            connection.release();
+            return res.send(global.ResponseErr + err.toString() + "\"}");
         }
-				
-        connection.query(addHero, function (err, rows) {
-                    // And done with the connection.
-                    if (err) {
-                        console.log("mysql addHero error" + err);
-						connection.release();
-                        return res.send(err);
-                    }
-                    connection.release();
 
-                    return res.send("Request successed!");
-                });
-     });
+        connection.query(addHero, function (err, rows) {
+            // And done with the connection.
+            if (err) {
+                connection.release();
+                return res.send(global.ResponseErr + err.toString() + "\"}");
+            }
+            connection.release();
+
+            return res.send(global.ResponseMsg + "}");
+        });
+    });
 
 }
