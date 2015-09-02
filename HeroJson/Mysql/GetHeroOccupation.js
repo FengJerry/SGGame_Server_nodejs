@@ -25,7 +25,7 @@ exports.Response = function (req , res) {
             
             var result = JSON.stringify(rows);
             //  connection.release();
-            result = "\"data\": " + result + ",";
+            result = "{\"data\": " + result + "}";
             connection.release();
             res.type('json');
             return res.send(result);
