@@ -32,7 +32,7 @@ var resetEquipment = require('./Mysql/ResetEquipment.js');
 var refreshHeroEquipment = require('./Mysql/RefreshHeroEquipment.js');
 var getNotice = require('./Mysql/Notice.js');
 var getHeroOccupation = require("./Mysql/GetHeroOccupation.js");
-
+var getOccupationGrams = require("./Mysql/GetOccupationgrams.js");
 
 var app = express();
 
@@ -79,6 +79,8 @@ app.post('/resetequipment', resetEquipment.Response);
 app.post('/getnotice', getNotice.GetResponse);
 app.get('/refreshheroequipment', refreshHeroEquipment.GetResponse);
 app.get('/getherooccupation', getHeroOccupation.Response);
+app.get('/getoccupationgrams', getOccupationGrams.Response);
+
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
