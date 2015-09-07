@@ -47,7 +47,7 @@ exports.Response = function (req, res) {
                 return res.send(global.ResponseMsg + ",\"data\": " + result + "}");
             });
         });
-
+    });
 
         function checkGold() {
             if (!(typeof req.body.gold === 'undefined')) {
@@ -129,6 +129,6 @@ exports.Response = function (req, res) {
             }
         }
 
-    });
+   
 
 }
