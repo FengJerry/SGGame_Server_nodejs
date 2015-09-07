@@ -4,8 +4,9 @@ exports.Response = function (req , res) {
     
 
     
-    var setEquipment = 'update tb_userequipment set UserHeroId = ' + req.body.userHeroId + 'where UserEquipmentId = ' + req.body.userEquipmentId;
+    var setEquipment = 'update tb_userequipment set UserHeroId = ' + req.body.userHeroId + ' where Id = ' + req.body.userEquipmentId;
 	
+    console.log(setEquipment);
 	
     var pool = database.getConnectionPool();
     

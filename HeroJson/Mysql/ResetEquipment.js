@@ -4,7 +4,7 @@ exports.Response = function (req, res) {
 
 
 
-    var resetEquipment = 'update tb_userequipment set UserHeroId = null where UserEquipmentId = ' + req.body.userEquipmentId;
+    var resetEquipment = 'update tb_userequipment set UserHeroId = 0 where Id = ' + req.body.userEquipmentId;
 
 
     var pool = database.getConnectionPool();
