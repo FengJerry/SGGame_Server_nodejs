@@ -33,6 +33,8 @@ var refreshHeroEquipment = require('./Mysql/RefreshHeroEquipment.js');
 var getNotice = require('./Mysql/Notice.js');
 var getHeroOccupation = require("./Mysql/GetHeroOccupation.js");
 var getOccupationGrams = require("./Mysql/GetOccupationgrams.js");
+var setUserName = require('./Mysql/SetUserName.js')
+var getEquipmentGrade = require('./Mysql/GetWeaponUpgradeInfo.js');
 
 var app = express();
 
@@ -80,6 +82,8 @@ app.post('/getnotice', getNotice.GetResponse);
 app.get('/refreshheroequipment', refreshHeroEquipment.GetResponse);
 app.get('/getherooccupation', getHeroOccupation.Response);
 app.get('/getoccupationgrams', getOccupationGrams.Response);
+app.post('/setusername', setUserName.Response);
+app.get('/getweapongradeinfo', getEquipmentGrade.GetResponse);
 
 
 http.createServer(app).listen(app.get('port'), function () {

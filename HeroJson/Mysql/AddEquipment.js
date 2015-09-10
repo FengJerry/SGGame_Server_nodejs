@@ -2,7 +2,7 @@
 exports.Response = function (req, res) {
 
     //var connection = database.getConnection();
-
+   //todo: 我要做的饿事
     var addEquipment = 'insert into tb_userequipment (UserId,EquipmentId,EquipmentLevel) value ('
         + req.body.userId
         + ','
