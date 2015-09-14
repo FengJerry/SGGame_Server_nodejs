@@ -5,7 +5,7 @@ exports.Response = function (req, res) {
 
     var sqlUser = 'select UserId,Gold,Diamond,Stamina, SoulStone , Name from tb_userinfo where userId = ' + req.body.userId;
 
-    var sqlHero = 'select UserHeroId, HeroId,HeroLevel from tb_userhero where userId = ' + req.body.userId;
+    var sqlHero = 'select UserHeroId, HeroId,HeroLevel,Advance from tb_userhero where userId = ' + req.body.userId;
 
     var sqlEquipment = 'select * from tb_userequipment where userId = ' + req.body.userId;
 

@@ -2,11 +2,7 @@
 
 
 exports.GetResponse = function (req, res) {
-    
-    if (global.Hero !== '') {
-        res.type('json');
-        return res.send(global.Hero);
-    }
+
     
     var sql = 'select * from ts_weapongrade';
     
@@ -31,8 +27,8 @@ exports.GetResponse = function (req, res) {
             var result = JSON.stringify(rows);
             
             connection.release();
-            global.Hero = global.ResponseMsg + ",\"data\": " + result + "}";
-            return res.send(global.Hero);
+            result = global.ResponseMsg + ",\"data\": " + result + "}";
+            return res.send(result);
 
             // Don't use the connection here, it has been returned to the pool.
         });

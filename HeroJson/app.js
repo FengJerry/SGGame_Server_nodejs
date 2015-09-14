@@ -36,7 +36,7 @@ var getOccupationGrams = require("./Mysql/GetOccupationgrams.js");
 var setUserName = require('./Mysql/SetUserName.js')
 var getEquipmentGrade = require('./Mysql/GetWeaponUpgradeInfo.js');
 var removerEquipment = require('./Mysql/RemoveEquipment.js');
-
+var advanceHero = require('./Mysql/AdvanceHero.js')
 
 
 var app = express();
@@ -88,6 +88,9 @@ app.get('/getoccupationgrams', getOccupationGrams.Response);
 app.post('/setusername', setUserName.Response);
 app.get('/getweapongradeinfo', getEquipmentGrade.GetResponse);
 app.post('/removeequipment', removerEquipment.Response);
+app.post('/advancehero',advanceHero.Response);//
+
+
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
