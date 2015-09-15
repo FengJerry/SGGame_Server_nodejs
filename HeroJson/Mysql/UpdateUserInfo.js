@@ -36,6 +36,7 @@ exports.Response = function (req, res) {
             }
             connection.query(sqlUser, function (err, rows) {
                 // And done with the connection.
+                console.log(sqlUser);
                 if (err) {
                     connection.release();
                     return res.send(global.ResponseErr + err.toString() + "\"}");

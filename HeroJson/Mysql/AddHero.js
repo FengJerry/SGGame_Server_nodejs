@@ -29,9 +29,18 @@ exports.Response = function (req, res) {
                 connection.release();
                 return res.send(global.ResponseErr + err.toString() + "\"}");
             }
-            connection.release();
-
-            return res.send(global.ResponseMsg + "}");
+        connection.query("select LAST_INSERT_ID()",function(err,rows){
+                if(err){
+                    connection.release();
+                    return res.send(global.ResponseErr + err.toString() + "\"}");
+                }
+                 connection.release();
+                 
+                 var result = JSON.stringify(rows[0]);
+                 
+                return res.send(rows[0]);
+                
+            });
         });
     });
 
